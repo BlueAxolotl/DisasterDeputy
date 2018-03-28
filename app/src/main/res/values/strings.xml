@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">DisasterDeputy</string>
+    <string name="MainTitle">Welcome to Disaster Deputy!</string>
+    <string name="MainText2" />
+    <string name="SecondMainText">Are You a Charity or a Donor?</string>
+    <string name="CharityButton">Charity</string>
+    <string name="DonorButton">Donor</string>
 </resources>
