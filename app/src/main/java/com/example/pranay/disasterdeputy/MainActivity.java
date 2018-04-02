@@ -19,4 +19,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void DonorPush(View v){
+        Intent intent2 = new Intent (this, DonorSearcher.class);
+        startActivity(intent2);
+    }
+
 }
