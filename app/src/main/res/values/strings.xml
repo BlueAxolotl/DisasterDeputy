@@ -5,4 +5,8 @@
     <string name="SecondMainText">Are You a Charity or a Donor?</string>
     <string name="CharityButton">Charity</string>
     <string name="DonorButton">Donor</string>
+    <string name="UserLocationInput" />
+    <string name="UserInputLocation">Enter Your Zipcode</string>
+    <string name="AddressText">Enter Your Zipcode:</string>
+    <string name="SuppliesText">Enter Your Supplies:</string>
 </resources>

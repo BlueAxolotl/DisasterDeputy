@@ -8,4 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="UserLocationButton"></style>
+
+    <style name="LocationUserButton">Enter</style>
+
 </resources>
