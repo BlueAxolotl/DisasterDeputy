@@ -9,4 +9,5 @@
     <string name="UserInputLocation">Enter Your Zipcode</string>
     <string name="AddressText">Enter Your Zipcode:</string>
     <string name="SuppliesText">Enter Your Supplies:</string>
+    <string name="ZipCodeButton">Enter</string>
 </resources>
