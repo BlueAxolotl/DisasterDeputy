@@ -7,7 +7,7 @@
     tools:context="com.example.pranay.disasterdeputy.MainActivity">
 
     <TextView
-        android:id="@+id/FirstMainText"
+        android:id="@+id/WelcomeMessage"
         android:layout_width="313dp"
         android:layout_height="0dp"
         android:layout_marginBottom="153dp"
@@ -18,7 +18,7 @@
         android:layout_marginTop="148dp"
         android:text="@string/MainTitle"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/DonorButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -40,12 +40,12 @@
         android:onClick="CharityPush"
         android:text="@string/CharityButton"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@+id/DonorButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button2" />
+        app:layout_constraintTop_toTopOf="@+id/DonorButton" />
 
     <TextView
-        android:id="@+id/SecondMainText"
+        android:id="@+id/CharityorDonor"
         android:layout_width="183dp"
         android:layout_height="32dp"
         android:layout_marginEnd="8dp"
@@ -56,10 +56,10 @@
         android:text="@string/SecondMainText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FirstMainText" />
+        app:layout_constraintTop_toBottomOf="@+id/WelcomeMessage" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/DonorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="115dp"
@@ -69,6 +69,6 @@
         android:text="@string/DonorButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FirstMainText" />
+        app:layout_constraintTop_toBottomOf="@+id/WelcomeMessage" />
 
 </android.support.constraint.ConstraintLayout>
