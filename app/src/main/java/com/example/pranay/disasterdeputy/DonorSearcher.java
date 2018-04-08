@@ -6,9 +6,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class DonorSearcher extends AppCompatActivity {
-    String charityList[]={"UNICEF", "American Red Cross"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        String charityList[]={"UNICEF", "American Red Cross"};
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donor_searcher);
         ListView simpleList = (ListView) findViewById(R.id.CharityList_User);
