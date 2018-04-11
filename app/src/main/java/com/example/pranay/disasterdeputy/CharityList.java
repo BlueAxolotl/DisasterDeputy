@@ -1,6 +1,6 @@
 package com.example.pranay.disasterdeputy;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+//import com.google.firebase.database.DatabaseReference;
+//import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 /**
@@ -10,9 +10,9 @@ import java.util.ArrayList;
 public class CharityList {
     public static void main(String[]args){
         ArrayList<Charity> list = new ArrayList<Charity>();
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message ");
-        myRef.setValue(list);
+        //FirebaseDatabase database = FirebaseDatabase.getInstance();
+        //DatabaseReference myRef = database.getReference("message ");
+        //myRef.setValue(list);
 
 
     }
