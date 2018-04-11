@@ -1,36 +1,56 @@
 package com.example.pranay.disasterdeputy;
 import java.util.ArrayList;
 public class Charity {
-    private int zipCode;
+    private String zipCode;
     private String name;
     private ArrayList<String> supplies = new ArrayList<String>();
-    public Charity(String n, int z, ArrayList<String> s){
+
+
+    //This constructor creates a charity object with the name, address and supplies of the charity
+    public Charity(String n, String z, ArrayList<String> s){
         name = n;
         zipCode = z;
         for(int i = 0;i<s.size();i++){
             supplies.add(s.get(i));
         }
     }
+    //This method takes the input of a string and sets that to the name of a charity object
     public void setName(String n){
+
         name = n;
     }
-    public void setDistance(int z){
+
+    //This method takes the input of a distance and sets it to the location of the charity
+    public void setDistance(String z){
+
         zipCode = z;
     }
+
+    //This method does not have any input and gets the name of the charity
     public String getName(){
+
         return name;
     }
-    public double getZipCode(){
+
+    //This method does not take input and returns location of the charity
+    public String getZipCode(){
+
         return zipCode;
     }
+
+    //This method does not take any input and returns the array list of supplies for the charity
     public ArrayList<String> getSupplies(){
+
         return supplies;
     }
+
+    //This method will eventually take user input to determine the distance from the charity to the user
     public double getDistance(){
+
         return 0;
     }
 
-   public Charity(String charityName, int distance){
+   //public Charity(String charityName, int distance){
 
-    }
+    //}
 }
