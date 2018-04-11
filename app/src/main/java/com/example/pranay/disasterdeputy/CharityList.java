@@ -49,5 +49,4 @@ public class CharityList {
         }
         return sortedList;
     }
-
 }

@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".CharitySearcher" />
-        <activity android:name=".DonorSearcher"></activity>
+        <activity android:name=".DonorSearcher" />
     </application>
 
 </manifest>
