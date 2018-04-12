@@ -18,6 +18,7 @@
         </activity>
         <activity android:name=".CharitySearcher" />
         <activity android:name=".DonorSearcher" />
+        <activity android:name=".charityInput"></activity>
     </application>
 
 </manifest>

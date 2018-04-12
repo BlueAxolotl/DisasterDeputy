@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.pranay.disasterdeputy.MainActivity">
-
+<!--This is the main activity in which the user chooses whether they are a charity-->
+    <!--or a donor the buttons take them to the respective screens -->
     <TextView
         android:id="@+id/WelcomeMessage"
         android:layout_width="313dp"
@@ -70,10 +71,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/WelcomeMessage" />
-
-    <ListView
-        android:id="@+id/myListView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
 </android.support.constraint.ConstraintLayout>

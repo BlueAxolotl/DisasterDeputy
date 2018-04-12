@@ -23,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //the code below is commented out because originally the list of charity objects was generated in this activity but it was moved
+        //to the donor and charity activities because it was only being used for testing
+        //in the future the arraylist will be all together and will be able to be used throughout the classes v
 //       charitiesObject = new ArrayList<Charity>();
 //        InputStream is = getResources().openRawResource(R.raw.originalcharitylist);
 //

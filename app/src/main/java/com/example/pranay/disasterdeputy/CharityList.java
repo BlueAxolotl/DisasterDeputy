@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * Created by Pranay on 4/2/18.
  */
 
-//This class is still in progress but it will eventually  be used to establish the database of charities
+//This class is still in progress but it will eventually  be used to establish the database of charities and get the list working
 
 public class CharityList {
    // public static void main(String[]args){
