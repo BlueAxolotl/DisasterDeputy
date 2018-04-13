@@ -1,12 +1,15 @@
 package com.example.pranay.disasterdeputy;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -70,5 +73,20 @@ public class DonorSearcher extends AppCompatActivity {
         ListView myListView = (ListView) findViewById(R.id.UserCharityList);
         myListView.setAdapter(charityAdapter);
 
+        /*@Override
+      public void onClick(View v) {
+        charityAdapter.notifyDataSetChanged();
+      }
+
+        //when a charity is clicked from the listView, it will redirect to the charity's page
+        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Intent myintent = new Intent(view.getContext(), individualCharity.class);
+                startActivityForResult(myintent,0);
+            }
+        });*/
     }
 }
