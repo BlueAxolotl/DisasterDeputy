@@ -1,15 +1,12 @@
 package com.example.pranay.disasterdeputy;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -40,6 +37,7 @@ public class DonorSearcher extends AppCompatActivity {
         charitiesObject = new ArrayList<Charity>();
         InputStream is = getResources().openRawResource(R.raw.originalcharitylist);
 
+        //Below the text file is read and an array list is formed eventually firebase will do this
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 
         String line = "";
@@ -47,10 +45,10 @@ public class DonorSearcher extends AppCompatActivity {
         try {
 
 
-            while ((line = reader.readLine()) != null) {
+            while ((line = reader.readLine()) != null) {   //This loops through the text file and finds the charities names and locations
 
                 String[] fields = line.split(",");
-                ArrayList<String> supplies = new ArrayList<String>();
+                ArrayList<String> supplies = new ArrayList<String>();          //This creates an empty arraylist for the supplies of each charity that will be added on the charity screen
                 Charity c = new Charity(fields[0], fields[1], supplies);
                 charitiesObject.add(c);
 
@@ -68,25 +66,16 @@ public class DonorSearcher extends AppCompatActivity {
             String CharityName = charitiesObject.get(i).getName();
             CharityNamesOnly.add(CharityName);
         }
-
+        //This displays the charity list of names only on the donor screen
+        //Next we have to figure out how to implement the adapter listener so that when the item is clicked it will go to the next page
         ListAdapter charityAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, CharityNamesOnly);
         ListView myListView = (ListView) findViewById(R.id.UserCharityList);
         myListView.setAdapter(charityAdapter);
 
-        /*@Override
-      public void onClick(View v) {
-        charityAdapter.notifyDataSetChanged();
-      }
 
-        //when a charity is clicked from the listView, it will redirect to the charity's page
-        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Intent myintent = new Intent(view.getContext(), individualCharity.class);
-                startActivityForResult(myintent,0);
-            }
-        });*/
+
     }
+
 }

@@ -5,6 +5,7 @@ public class Charity {
     private String name;
     private ArrayList<String> supplies = new ArrayList<String>();
 
+//This class models a charity with a certain location and a list of supplies that the charity needs
 
     //This constructor creates a charity object with the name, address and supplies of the charity
     public Charity(String n, String z, ArrayList<String> s){
