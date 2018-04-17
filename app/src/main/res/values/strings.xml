@@ -12,4 +12,6 @@
     <string name="ZipCodeButton">Enter</string>
     <string name="charityName">name</string>
     <string name="charityLocation">location</string>
+    <string name="IndividualCharityName">Charity Name:</string>
+    <string name="individualCharityLocation" />
 </resources>

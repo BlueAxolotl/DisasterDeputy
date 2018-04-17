@@ -21,8 +21,27 @@ public class CharityList {
         //FirebaseDatabase database = FirebaseDatabase.getInstance();
         //DatabaseReference myRef = database.getReference("message ");
         //myRef.setValue(list);
-
+        private ArrayList<Charity> charities;
+        private Charity c;
 //}
+public CharityList(){
+    charities=new ArrayList<Charity>();
+}
+
+public void addCharity(String n, String L, ArrayList<String> s){
+    c=new Charity(n,L,s);
+    charities.add(c);
+}
+
+public ArrayList<Charity> getCharityList(){
+
+    return charities;
+}
+
+public Charity getOneCharity(int position){
+
+    return charities.get(position);
+}
 
 
 

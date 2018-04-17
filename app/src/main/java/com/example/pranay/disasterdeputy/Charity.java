@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Charity {
     private String zipCode;
     private String name;
-    private ArrayList<String> supplies = new ArrayList<String>();
+    private ArrayList<String> supplies;
 
 //This class models a charity with a certain location and a list of supplies that the charity needs
 
@@ -11,9 +11,11 @@ public class Charity {
     public Charity(String n, String z, ArrayList<String> s){
         name = n;
         zipCode = z;
-        for(int i = 0;i<s.size();i++){
-            supplies.add(s.get(i));
-        }
+        supplies= new ArrayList<String>();
+        supplies=s;
+//        for(int i = 0;i<s.size();i++){
+//            supplies.add(s.get(i));
+//        }
     }
     //This method takes the input of a string and sets that to the name of a charity object
     public void setName(String n){
@@ -49,6 +51,15 @@ public class Charity {
     public double getDistance(){
 
         return 0;
+    }
+
+    public void addSupplies(String supply){
+        supplies.add(supply);
+
+    }
+
+    public void clearSupplies(){
+        supplies.clear();
     }
 
    //public Charity(String charityName, int distance){

@@ -16,5 +16,9 @@
 
     <style name="UserCharityList"></style>
 
+    <style name="AddSupply">ADD</style>
+
+    <style name="Theme">Theme</style>
+
 
 </resources>
