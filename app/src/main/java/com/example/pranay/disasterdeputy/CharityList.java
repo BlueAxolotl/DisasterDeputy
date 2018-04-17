@@ -1,9 +1,6 @@
 package com.example.pranay.disasterdeputy;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+//import com.google.firebase.database.DatabaseReference;
+//import com.google.firebase.database.FirebaseDatabase;
 
 import android.util.Log;
 
@@ -21,8 +18,10 @@ import java.util.ArrayList;
 public class CharityList {
     static DatabaseReference database = FirebaseDatabase.getInstance().getReference();
     Charity result;
+    private ArrayList<Charity> charities;
+    private Charity c;
     public static void main(String[]args){
-        ArrayList<Charity> charities = new ArrayList<Charity>();
+        charities = new ArrayList<Charity>();
         for(int i = 0;i<charities.size();i++) {
 
             DatabaseReference pushedCharity = database.child(charities.get(i).getName());
@@ -47,7 +46,24 @@ public class CharityList {
         });
         return result;
     }
+    public CharityList(){
+        charities=new ArrayList<Charity>();
+    }
 
+    public void addCharity(String n, String L, ArrayList<String> s){
+        c=new Charity(n,L,s);
+        charities.add(c);
+    }
+
+    public ArrayList<Charity> getCharityList(){
+
+        return charities;
+    }
+
+    public Charity getOneCharity(int position){
+
+        return charities.get(position);
+    }
 
 
 
