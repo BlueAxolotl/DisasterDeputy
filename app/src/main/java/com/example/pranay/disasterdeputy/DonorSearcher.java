@@ -12,6 +12,9 @@ import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -35,7 +38,9 @@ public class DonorSearcher extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donor_searcher);
         final Controller aController = (Controller) getApplicationContext();
-        CharityList cl=new CharityList();
+        FirebaseApp.initializeApp(this);
+
+        CharityList cl=new CharityList(FirebaseDatabase.getInstance());
         cl=aController.getData();
         ArrayList<Charity> charitiesObjects= new ArrayList<Charity>();
         charitiesObjects=cl.getCharityList();

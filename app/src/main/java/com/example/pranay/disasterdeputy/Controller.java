@@ -1,6 +1,10 @@
 package com.example.pranay.disasterdeputy;
 //This class is a controller to store the array list throughout the app
 import android.app.Application;
+import android.util.Log;
+
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 //this is a controller that stores a CharityList object the object is an arraylist of charities
@@ -9,7 +13,20 @@ import java.util.ArrayList;
 //how to get this this to be shorter when searching
 public class Controller extends Application{
 
-    private CharityList charities= new CharityList();
+    FirebaseDatabase database;
+
+    private CharityList charities;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        FirebaseApp.initializeApp(this);
+        Log.d("CONTROLLER", FirebaseApp.getInstance().toString());
+        database = FirebaseDatabase.getInstance();
+        charities=  new CharityList(database);
+    }
+
 
     public CharityList getData() {
 
