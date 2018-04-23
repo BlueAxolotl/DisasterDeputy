@@ -106,7 +106,6 @@
 
     <ListView
         android:id="@+id/UserCharityList"
-        style="@style/UserCharityList"
         android:layout_width="584dp"
         android:layout_height="790dp"
         android:layout_marginBottom="16dp"

@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
             Log.e("MainActivity", "Error reading data on line" + line);
 
         }
-        CharityList cl=new CharityList();
-        cl=aController.getData();
+
+       CharityList cl=aController.getData();
         ArrayList<Charity> charitiesObjects= new ArrayList<Charity>();
         charitiesObjects=cl.getCharityList();
         for(int i=0; i<charitiesObjects.size(); i++) {

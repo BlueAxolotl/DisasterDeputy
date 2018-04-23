@@ -8,13 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="UserLocationButton"></style>
+
 
     <style name="LocationUserButton">Enter</style>
-
-
-
-    <style name="UserCharityList"></style>
 
     <style name="AddSupply">ADD</style>
 
