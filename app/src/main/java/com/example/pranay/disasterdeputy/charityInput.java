@@ -12,7 +12,14 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
+
+
+
+
 
 //This class will be for each individual charity to enter the supplies that they have
 //the supplies will be added to the corresponding array list in their charity object
@@ -21,6 +28,9 @@ import java.util.ArrayList;
 //this will be like an on search method
 public class charityInput extends AppCompatActivity {
     int position;
+    DatabaseReference myRef;
+    String charityName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +38,10 @@ public class charityInput extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
        position=bundle.getInt("position");
         final Controller aController = (Controller) getApplicationContext();
-        String charityName=aController.getData().getOneCharity(position).getName();
-        String charityLocation=aController.getData().getOneCharity(position).getZipCode();
+        FirebaseDatabase database= FirebaseDatabase.getInstance();
+        myRef= database.getReference("Charities");
+        charityName=aController.getData().getOneCharity(position).getName();
+        String charityLocation=aController.getData().getOneCharity(position).getZipcode();
         ArrayList<String> charitySupplies=aController.getData().getOneCharity(position).getSupplies();
 
 
@@ -40,9 +52,9 @@ public class charityInput extends AppCompatActivity {
         locationText.setText("Charity Location: " + charityLocation );
 
 
-        ListAdapter charityAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, charitySupplies);
-        ListView myListView = (ListView) findViewById(R.id.SupplyList);
-        myListView.setAdapter(charityAdapter);
+        ListAdapter charityAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, charitySupplies); //only works if something is in the list
+        ListView myListView = (ListView) findViewById(R.id.SupplyList);                                                            //had to put none in the list for now
+        myListView.setAdapter(charityAdapter);                                                                                      //in the method that can be deleted when something is added to
 
 
 
@@ -52,16 +64,26 @@ public class charityInput extends AppCompatActivity {
         TextInputLayout supplyentry = findViewById(R.id.supplyinput);
         String Supply= supplyentry.getEditText().getText().toString();
         final Controller aController = (Controller) getApplicationContext();
-        aController.getData().getOneCharity(position).addSupplies(Supply);
+       // aController.getData().getOneCharity(position).addSupplies(Supply);
         ArrayList<String> charitySupplies=aController.getData().getOneCharity(position).getSupplies();
         ListAdapter charityAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, charitySupplies);
         ListView myListView = (ListView) findViewById(R.id.SupplyList);
         myListView.setAdapter(charityAdapter);
+
+        myRef.getKey();
+
+
+                                                                //This code will update the database by removing everything
+        myRef.child(charityName).child("supplies").setValue(Supply);                             //Need to figure out how to add specific
+                                                              // supplies and how to search the list
+                                                              //search the list and find a new controller
+                                                             //and then adding everything with the controller
+
     }
 
     public void supplyClear(View v){
         final Controller aController = (Controller) getApplicationContext();
-        aController.getData().getOneCharity(position).clearSupplies();
+        aController.getData().getOneCharity(position).clearSupplies();     //changed to set supplies null from clear supplies for debugging
         ArrayList<String> charitySupplies=aController.getData().getOneCharity(position).getSupplies();
         ListAdapter charityAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, charitySupplies);
         ListView myListView = (ListView) findViewById(R.id.SupplyList);

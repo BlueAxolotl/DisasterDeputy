@@ -24,13 +24,13 @@ import java.util.ArrayList;
 
 public class CharityList {
     DatabaseReference databaseReference;
-    Charity result;
+    //Charity result;
     private ArrayList<Charity> charities;
     private Charity c;
 
-    public CharityList(FirebaseDatabase database) {
+    public CharityList() {
         charities = new ArrayList<Charity>();
-        databaseReference = database.getReference();
+        //databaseReference = database.getReference();
     }
 
 //
@@ -45,26 +45,26 @@ public class CharityList {
 //        //myRef.setValue(list);
 //    }
 
-    public Charity getCharityByName(String name) {
+//    public Charity getCharityByName(String name) {
+//
+//        databaseReference.child("charities").child(name).addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                result = dataSnapshot.getValue(Charity.class);
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//        return result;
+//    }
 
-        databaseReference.child("charities").child(name).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                result = dataSnapshot.getValue(Charity.class);
 
-            }
+    public void addCharity(Charity c) {
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        return result;
-    }
-
-
-    public void addCharity(String n, String L, ArrayList<String> s) {
-        c = new Charity(n, L, s);
         charities.add(c);
     }
 
@@ -76,6 +76,9 @@ public class CharityList {
     public Charity getOneCharity(int position) {
 
         return charities.get(position);
+    }
+    public void clearCharities(){
+        charities.clear();
     }
 
 //    public static ArrayList<Charity> search(String s, ArrayList<Charity> charities) {

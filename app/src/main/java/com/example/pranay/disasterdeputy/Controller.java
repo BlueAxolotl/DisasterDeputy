@@ -13,19 +13,18 @@ import java.util.ArrayList;
 //how to get this this to be shorter when searching
 public class Controller extends Application{
 
-    FirebaseDatabase database;
+   // FirebaseDatabase database;
 
-    private CharityList charities;
+    private CharityList charities=new CharityList();
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-        FirebaseApp.initializeApp(this);
-        Log.d("CONTROLLER", FirebaseApp.getInstance().toString());
-        database = FirebaseDatabase.getInstance();
-        charities=  new CharityList(database);
-    }
+    //@Override
+  //  public void onCreate() {
+//        super.onCreate();
+//
+//        FirebaseApp.initializeApp(this);
+//        Log.d("CONTROLLER", FirebaseApp.getInstance().toString());
+//        database = FirebaseDatabase.getInstance();
+   // }
 
 
     public CharityList getData() {

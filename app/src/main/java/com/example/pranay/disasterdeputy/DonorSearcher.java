@@ -13,7 +13,11 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,7 +26,11 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class DonorSearcher extends AppCompatActivity {
-
+    ArrayList<Charity> charitiesObjects;
+    ArrayList<String> CharityNamesOnly;
+    DatabaseReference myRef;
+    FirebaseDatabase database;
+    ArrayList<String> supplies;
 
 
 
@@ -35,16 +43,20 @@ public class DonorSearcher extends AppCompatActivity {
     //this will be like an on search method
     protected void onCreate(Bundle savedInstanceState) {
 
+        database= FirebaseDatabase.getInstance();
+        myRef= database.getReference("Charities");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donor_searcher);
         final Controller aController = (Controller) getApplicationContext();
         FirebaseApp.initializeApp(this);
 
-        CharityList cl=new CharityList(FirebaseDatabase.getInstance());
+        CharityList cl=new CharityList();
         cl=aController.getData();
-        ArrayList<Charity> charitiesObjects= new ArrayList<Charity>();
+       charitiesObjects= new ArrayList<Charity>();
         charitiesObjects=cl.getCharityList();
-        ArrayList<String> CharityNamesOnly= new ArrayList<String>();
+       CharityNamesOnly= new ArrayList<String>();
+
 
         for(int i=0; i<charitiesObjects.size(); i++){
             String CharityName = charitiesObjects.get(i).getName();
@@ -74,5 +86,35 @@ public class DonorSearcher extends AppCompatActivity {
 
 
     }
+    public void charitySearch(View v){
+       supplies=new ArrayList<>();
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot charitysnapshot: dataSnapshot.getChildren()){
+
+                    Charity c=charitysnapshot.getValue(Charity.class);
+                    supplies=c.getSupplies();
+                    for(int i=0; i<supplies.size();i++){
+
+                    }
+
+
+
+                }
+
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
 
 }

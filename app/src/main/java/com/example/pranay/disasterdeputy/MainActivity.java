@@ -13,62 +13,78 @@ import android.widget.ListView;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 //import public com.example.pranay.disasterdeputy.Controller.charities;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    CharityList charities;
+    DatabaseReference myRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Object name;
         FirebaseOptions options;
-        
+        charities =new CharityList();
 
-        //the code below is commented out because originally the list of charity objects was generated in this activity but it was moved
-        //to the donor and charity activities because it was only being used for testing
-        //in the future the arraylist will be all together and will be able to be used throughout the classes v
+        FirebaseApp.initializeApp(this);
         final Controller aController = (Controller) getApplicationContext();
-        InputStream is = getResources().openRawResource(R.raw.originalcharitylist);
-
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-
-        String line = "";
-
-        try {
+        charities=new CharityList();
+        FirebaseDatabase database= FirebaseDatabase.getInstance();
+        myRef= database.getReference("Charities");
 
 
-            while ((line = reader.readLine()) != null) {           //this code adds to the controller which is the CharityList object
-                                                                    //The controller can then be used throughout the app
-                String[] fields = line.split(",");
-                String charityName= fields[0];
-                String charityAddress =fields[1];
-                ArrayList<String> supplies=new ArrayList<>();
-                aController.getData().addCharity(charityName,charityAddress,supplies);
+       myRef.addValueEventListener(new ValueEventListener() {
+           @Override
+           public void onDataChange(DataSnapshot dataSnapshot) {
+                aController.getData().clearCharities();
+               charities.clearCharities();
+               Log.d("MainActivity", "In the on data change.");
+               for(DataSnapshot charitysnapshot: dataSnapshot.getChildren()){
+                   Log.d("MainActivity", "In loop");
+                   Charity c = charitysnapshot.getValue(Charity.class);
+                   charities.addCharity(c);
+                   aController.getData().addCharity(c);
 
 
 
-            }
-        } catch (IOException e) {
-            Log.e("MainActivity", "Error reading data on line" + line);
+               }
 
-        }
+              ArrayList<Charity> charitiesObjects= new ArrayList<Charity>();
+               charitiesObjects=charities.getCharityList();
+              for(int i=0; i<charitiesObjects.size(); i++) {
+                   Log.d("MainActivity", charitiesObjects.get(i).getName());
+               }
 
-       CharityList cl=aController.getData();
-        ArrayList<Charity> charitiesObjects= new ArrayList<Charity>();
-        charitiesObjects=cl.getCharityList();
-        for(int i=0; i<charitiesObjects.size(); i++) {
-            Log.d("MainActivity", charitiesObjects.get(i).getName() + " " + charitiesObjects.get(i).getZipCode() + " ");
-        }
+           }
+
+           @Override
+           public void onCancelled(DatabaseError databaseError) {
+
+           }
+       });
+
+
    }
+
+
+
+
 
     //This method brings the user to the charity searcher class when the charity button is pressed
     public void CharityPush(View v){

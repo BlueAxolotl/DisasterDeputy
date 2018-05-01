@@ -20,7 +20,7 @@ public class individualCharity extends AppCompatActivity {
         position=bundle.getInt("position");
         final Controller aController = (Controller) getApplicationContext();
         String charityName=aController.getData().getOneCharity(position).getName();
-        String charityLocation=aController.getData().getOneCharity(position).getZipCode();
+        String charityLocation=aController.getData().getOneCharity(position).getZipcode();
         ArrayList<String> charitySupplies=aController.getData().getOneCharity(position).getSupplies();
 
 
@@ -33,6 +33,6 @@ public class individualCharity extends AppCompatActivity {
 
         ListAdapter charityAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, charitySupplies);
         ListView myListView = (ListView) findViewById(R.id.suppliesList);
-        myListView.setAdapter(charityAdapter);
+    myListView.setAdapter(charityAdapter);
     }
 }
