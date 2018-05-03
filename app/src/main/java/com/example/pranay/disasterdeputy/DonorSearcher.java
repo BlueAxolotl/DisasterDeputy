@@ -1,6 +1,7 @@
 package com.example.pranay.disasterdeputy;
 
 import android.content.Intent;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +32,9 @@ public class DonorSearcher extends AppCompatActivity {
     DatabaseReference myRef;
     FirebaseDatabase database;
     ArrayList<String> supplies;
+    int count;
+    ListAdapter charityAdapter;
+    Controller aController;
 
 
 
@@ -48,7 +52,7 @@ public class DonorSearcher extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donor_searcher);
-        final Controller aController = (Controller) getApplicationContext();
+        aController = (Controller) getApplicationContext();
         FirebaseApp.initializeApp(this);
 
         CharityList cl=new CharityList();
@@ -61,21 +65,23 @@ public class DonorSearcher extends AppCompatActivity {
         for(int i=0; i<charitiesObjects.size(); i++){
             String CharityName = charitiesObjects.get(i).getName();
             CharityNamesOnly.add(CharityName);
+            Log.d("DonorSearcher",CharityName);
         }
         //This displays the charity list of names only on the donor screen
         //Next we have to figure out how to implement the adapter listener so that when the item is clicked it will go to the next page
-        final ListAdapter charityAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, CharityNamesOnly);
+         charityAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, CharityNamesOnly);
         ListView myListView = (ListView) findViewById(R.id.UserCharityList);
         myListView.setAdapter(charityAdapter);
 
 
+
+
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){                //I think the controller will have to be updated in this method to match the most recent list of charities
                 Intent myintent=new Intent(view.getContext(), individualCharity.class);
                 myintent.putExtra("position",i);
                 startActivityForResult(myintent,0);
-
 
             }
 
@@ -86,24 +92,45 @@ public class DonorSearcher extends AppCompatActivity {
 
 
     }
-    public void charitySearch(View v){
+    public void charitySearch(View v){                           //don't know if this method will stop the list from being complete if the screen were to revert back
        supplies=new ArrayList<>();
-        myRef.addValueEventListener(new ValueEventListener() {
+        charitiesObjects.clear();
+        CharityNamesOnly.clear();
+        aController.getData().clearCharities();
+        final Intent refresh = new Intent(this, DonorSearcher.class);
+        TextInputLayout supplySearch = findViewById(R.id.SupplyUserSearch);
+        final String Supply= supplySearch.getEditText().getText().toString();
+
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {       //will this add the the controller and change that
+                                                                     //in the on click make the method set the controller to whatever the charity objects list holds
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
+            public void onDataChange(DataSnapshot dataSnapshot) {      //have to make sure that this will work if it is empty and have a special case for that but want to be able to go back to all charities too
+                 
                 for(DataSnapshot charitysnapshot: dataSnapshot.getChildren()){
-
+                    count=0;
                     Charity c=charitysnapshot.getValue(Charity.class);
                     supplies=c.getSupplies();
                     for(int i=0; i<supplies.size();i++){
-
+                        if(supplies.get(i).contains(Supply)){
+                            count++;
+                        }
+                        else{
+                            count=count; //just to catch exceptions
+                        }
+                    }
+                    if(count>0){
+                        charitiesObjects.add(c);
+                        CharityNamesOnly.add(c.getName());
+                        aController.getData().addCharity(c);
                     }
 
 
-
+                }
+                for(int i=0; i<CharityNamesOnly.size();i++){
+                    Log.d("DonorSearcher", CharityNamesOnly.get(i));
                 }
 
+                startActivity(refresh);
 
 
             }

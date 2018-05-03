@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         myRef= database.getReference("Charities");
 
 
-       myRef.addValueEventListener(new ValueEventListener() {
+       myRef.addListenerForSingleValueEvent(new ValueEventListener() {
            @Override
            public void onDataChange(DataSnapshot dataSnapshot) {
                 aController.getData().clearCharities();
@@ -72,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
                }
 
            }
+
+
 
            @Override
            public void onCancelled(DatabaseError databaseError) {
