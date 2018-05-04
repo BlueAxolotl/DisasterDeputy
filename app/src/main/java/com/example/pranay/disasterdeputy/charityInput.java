@@ -64,17 +64,17 @@ public class charityInput extends AppCompatActivity {
         TextInputLayout supplyentry = findViewById(R.id.supplyinput);
         String Supply= supplyentry.getEditText().getText().toString();
         final Controller aController = (Controller) getApplicationContext();
-       // aController.getData().getOneCharity(position).addSupplies(Supply);
+        aController.getData().getOneCharity(position).addSupplies(Supply);
         ArrayList<String> charitySupplies=aController.getData().getOneCharity(position).getSupplies();
         ListAdapter charityAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, charitySupplies);
         ListView myListView = (ListView) findViewById(R.id.SupplyList);
         myListView.setAdapter(charityAdapter);
 
-        myRef.getKey();
+       // myRef.getKey();
 
 
                                                                 //This code will update the database by removing everything
-        myRef.child(charityName).child("supplies").setValue(Supply);                             //Need to figure out how to add specific
+        myRef.child(charityName).child("supplies").push().setValue(Supply);                              //Need to figure out how to add specific
                                                               // supplies and how to search the list
                                                               //search the list and find a new controller
                                                              //and then adding everything with the controller

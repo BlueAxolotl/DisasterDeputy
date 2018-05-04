@@ -39,7 +39,7 @@ public class CharitySearcher extends AppCompatActivity {
 
    @Override
     protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
+    super.onCreate(savedInstanceState);                             //make sure the controller is set to the correct thing
     setContentView(R.layout.activity_charity_searcher);
        final Controller aController = (Controller) getApplicationContext();
        FirebaseApp.initializeApp(this);

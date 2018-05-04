@@ -59,6 +59,10 @@ public class DonorSearcher extends AppCompatActivity {
         cl=aController.getData();
        charitiesObjects= new ArrayList<Charity>();
         charitiesObjects=cl.getCharityList();
+        for(int i=0; i<charitiesObjects.size(); i++){
+            String CharityName = charitiesObjects.get(i).getName();
+            Log.d("DonorSearcher",CharityName);
+        }
        CharityNamesOnly= new ArrayList<String>();
 
 
@@ -79,9 +83,9 @@ public class DonorSearcher extends AppCompatActivity {
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){                //I think the controller will have to be updated in this method to match the most recent list of charities
-                Intent myintent=new Intent(view.getContext(), individualCharity.class);
+                Intent myintent=new Intent(view.getContext(), individualCharity.class);  //make sure the controller is set to the correct thing.
                 myintent.putExtra("position",i);
-                startActivityForResult(myintent,0);
+                startActivityForResult(myintent,0);                            //gets new controller from the database so that should be ok
 
             }
 
@@ -119,8 +123,6 @@ public class DonorSearcher extends AppCompatActivity {
                         }
                     }
                     if(count>0){
-                        charitiesObjects.add(c);
-                        CharityNamesOnly.add(c.getName());
                         aController.getData().addCharity(c);
                     }
 
@@ -140,6 +142,40 @@ public class DonorSearcher extends AppCompatActivity {
 
             }
         });
+
+    }
+
+
+
+    public void CharityRefresh(View v){
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                aController.getData().clearCharities();
+
+                Log.d("MainActivity", "In the on data change.");
+                for(DataSnapshot charitysnapshot: dataSnapshot.getChildren()){
+                    Log.d("MainActivity", "In loop");
+                    Charity c = charitysnapshot.getValue(Charity.class);
+
+                    aController.getData().addCharity(c);
+
+                }
+                ArrayList<Charity> charitiesObjects= new ArrayList<Charity>();
+                for(int i=0; i<charitiesObjects.size(); i++) {
+                    Log.d("MainActivity", charitiesObjects.get(i).getName());
+                }
+
+            }
+
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
 
     }
 
