@@ -59,10 +59,7 @@ public class DonorSearcher extends AppCompatActivity {
         cl=aController.getData();
        charitiesObjects= new ArrayList<Charity>();
         charitiesObjects=cl.getCharityList();
-        for(int i=0; i<charitiesObjects.size(); i++){
-            String CharityName = charitiesObjects.get(i).getName();
-            Log.d("DonorSearcher",CharityName);
-        }
+
        CharityNamesOnly= new ArrayList<String>();
 
 
@@ -113,9 +110,9 @@ public class DonorSearcher extends AppCompatActivity {
                 for(DataSnapshot charitysnapshot: dataSnapshot.getChildren()){
                     count=0;
                     Charity c=charitysnapshot.getValue(Charity.class);
-                    supplies=c.getSupplies();
+                    supplies=(ArrayList<String>) c.getSupplies();
                     for(int i=0; i<supplies.size();i++){
-                        if(supplies.get(i).contains(Supply)){
+                        if((supplies.get(i).toLowerCase()).contains(Supply.toLowerCase())){
                             count++;
                         }
                         else{
@@ -147,9 +144,9 @@ public class DonorSearcher extends AppCompatActivity {
 
 
 
-    public void CharityRefresh(View v){
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
+    public void CharityRefresh(View v){                                     //figure out why this works for a single value event her but is only the
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {     //value event listener in the donor push and charity push button
+            @Override                                                       //make sure that this is checked
             public void onDataChange(DataSnapshot dataSnapshot) {
                 aController.getData().clearCharities();
 

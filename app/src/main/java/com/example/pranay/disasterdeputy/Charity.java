@@ -10,7 +10,7 @@ public class Charity {
 
 
     public Charity(){
-
+        supplies= new ArrayList<String>();
     }
 
     //This constructor creates a charity object with the name, address and supplies of the charity
@@ -67,6 +67,7 @@ public class Charity {
     }
 
     public void setSupplies(ArrayList<String> s){
+
         this.supplies=s;
     }
 

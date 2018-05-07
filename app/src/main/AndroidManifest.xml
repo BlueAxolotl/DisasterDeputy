@@ -3,7 +3,7 @@
     package="com.example.pranay.disasterdeputy">
 
     <application
-        android:name="com.example.pranay.disasterdeputy.Controller"
+        android:name=".Controller"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -19,9 +19,10 @@
         </activity>
         <activity android:name=".CharitySearcher" />
         <activity android:name=".DonorSearcher" />
-        <activity android:name=".individualCharity"/>
-        <activity android:name=".charityInput"></activity>
-
+        <activity android:name=".individualCharity" />
+        <activity android:name=".charityInput" />
+        <activity android:name=".clearAllScreen" />
+        <activity android:name=".clearOneScreen"></activity>
     </application>
 
 </manifest>

@@ -29,9 +29,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 //import public com.example.pranay.disasterdeputy.Controller.charities;
-
+//need to add a disclaimer that the app is not password protected
 public class MainActivity extends AppCompatActivity {
-
+    Controller aController;
     CharityList charities;
     DatabaseReference myRef;
     @Override
@@ -43,46 +43,44 @@ public class MainActivity extends AppCompatActivity {
         charities =new CharityList();
 
         FirebaseApp.initializeApp(this);
-        final Controller aController = (Controller) getApplicationContext();
+        aController = (Controller) getApplicationContext();
         charities=new CharityList();
         FirebaseDatabase database= FirebaseDatabase.getInstance();
         myRef= database.getReference("Charities");
 
-
-       myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-           @Override
-           public void onDataChange(DataSnapshot dataSnapshot) {
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
                 aController.getData().clearCharities();
-               charities.clearCharities();
-               Log.d("MainActivity", "In the on data change.");
-               for(DataSnapshot charitysnapshot: dataSnapshot.getChildren()){
-                   Log.d("MainActivity", "In loop");
-                   Charity c = charitysnapshot.getValue(Charity.class);
-                   charities.addCharity(c);
-                   aController.getData().addCharity(c);
+
+
+                for(DataSnapshot charitysnapshot: dataSnapshot.getChildren()){
+
+                    Charity c = charitysnapshot.getValue(Charity.class);
+
+                    aController.getData().addCharity(c);
+
+                }
 
 
 
-               }
-
-              ArrayList<Charity> charitiesObjects= new ArrayList<Charity>();
-               charitiesObjects=charities.getCharityList();
-              for(int i=0; i<charitiesObjects.size(); i++) {
-                   Log.d("MainActivity", charitiesObjects.get(i).getName());
-               }
-
-           }
+            }
 
 
 
-           @Override
-           public void onCancelled(DatabaseError databaseError) {
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-           }
-       });
+            }
+        });
 
 
-   }
+
+
+
+
+
+    }
 
 
 
@@ -90,6 +88,11 @@ public class MainActivity extends AppCompatActivity {
 
     //This method brings the user to the charity searcher class when the charity button is pressed
     public void CharityPush(View v){
+        Intent intent0 = new Intent (this, MainActivity.class);
+
+        startActivity(intent0);
+
+
         Intent intent = new Intent (this, CharitySearcher.class);
 
         startActivity(intent);
@@ -98,8 +101,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //This method switches to the Donor searcher class when the donor button is pressed
+    //The method first restarts the main activity so that the controller will be repopulated by the database
     public void DonorPush(View v){
-        Log.d("MainActivity","In donor push function");
+
+        Intent intent0 = new Intent (this, MainActivity.class);
+
+        startActivity(intent0);
         Intent intent = new Intent (this, DonorSearcher.class);
         startActivity(intent);
 
