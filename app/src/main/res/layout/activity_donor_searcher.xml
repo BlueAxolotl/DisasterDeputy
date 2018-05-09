@@ -15,9 +15,9 @@
         android:layout_marginLeft="12dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.601"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -30,50 +30,49 @@
     <Button
         android:id="@+id/SupplyReset"
         android:layout_width="165dp"
-        android:layout_height="49dp"
+        android:layout_height="54dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
         android:layout_marginTop="8dp"
         android:onClick="charitySearch"
         android:text="Refresh"
         app:layout_constraintBottom_toTopOf="@+id/UserCharityList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SupplyUserSearch"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.761" />
 
     <Button
         android:id="@+id/SupplySearch"
-        android:layout_width="167dp"
-        android:layout_height="48dp"
+        android:layout_width="170dp"
+        android:layout_height="54dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:onClick="charitySearch"
         android:text="Enter"
         app:layout_constraintEnd_toStartOf="@+id/SupplyReset"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.849"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SupplyUserSearch" />
 
     <ListView
         android:id="@+id/UserCharityList"
-        android:layout_width="364dp"
-        android:layout_height="471dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="460dp"
+        android:layout_height="592dp"
+        android:focusableInTouchMode="@bool/listPlacement1"
+        android:isScrollContainer="@bool/listPlacement2"
+        android:layout_marginBottom="33dp"
+        android:layout_marginEnd="73dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginRight="73dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SupplySearch"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/SupplySearch" />
 
 </android.support.constraint.ConstraintLayout>

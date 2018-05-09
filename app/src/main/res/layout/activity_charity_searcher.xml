@@ -17,9 +17,9 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -33,45 +33,51 @@
         android:id="@+id/CharityEnterButton"
         android:layout_width="173dp"
         android:layout_height="55dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
         android:layout_marginTop="8dp"
         android:onClick="CharityRefresh2"
         android:text="Refresh"
         app:layout_constraintBottom_toTopOf="@+id/UserCharityList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CharityNameSearch"
-        app:layout_constraintVertical_bias="0.937" />
+        app:layout_constraintVertical_bias="0.387" />
 
     <Button
         android:id="@+id/CharityRefreshButton"
         android:layout_width="170dp"
         android:layout_height="54dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="8dp"
         android:onClick="charitySearch2"
         android:text="Enter"
         app:layout_constraintBottom_toTopOf="@+id/UserCharityList"
+        app:layout_constraintEnd_toStartOf="@+id/CharityEnterButton"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CharityNameSearch"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.384" />
 
     <ListView
         android:id="@+id/UserCharityList"
         android:layout_width="0dp"
-        android:layout_height="373dp"
+        android:layout_height="524dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:focusableInTouchMode="@bool/listPlacement1"
+        android:isScrollContainer="@bool/listPlacement2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CharityNameSearch"
-        app:layout_constraintVertical_bias="1.0"
-        android:focusableInTouchMode="@bool/listPlacement1"
-        android:isScrollContainer="@bool/listPlacement2"/>
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>

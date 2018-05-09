@@ -2,14 +2,19 @@ package com.example.pranay.disasterdeputy;
 
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
@@ -34,13 +39,44 @@ public class MainActivity extends AppCompatActivity {
     Controller aController;
     CharityList charities;
     DatabaseReference myRef;
+
+    //creating a new font for the welcome message
+    TextView t;
+    Button b;
+    Button butt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Object name;
         FirebaseOptions options;
-        charities =new CharityList();
+        charities = new CharityList();
+
+        //UI
+        //font stuff
+        t = (TextView) findViewById(R.id.WelcomeMessage);
+        Typeface myCustomFont = Typeface.createFromAsset(getAssets(), "fonts/cocogoose.ttf");
+        t.setTypeface(myCustomFont);
+
+        //image icon
+        ImageView myImg = (ImageView) findViewById(R.id.myImageView);
+        myImg.setImageResource(R.drawable.tornado);
+
+        //image position
+        ImageView s = (ImageView) findViewById(R.id.myImageView);
+        s.setY(120);
+        s.setX(755);
+
+        //change donor button font
+        b = (Button) findViewById(R.id.DonorButton);
+        Typeface buttonFont = Typeface.createFromAsset(getAssets(), "fonts/redona.ttf");
+        b.setTypeface(buttonFont);
+
+        //change charity button font
+        butt = (Button) findViewById(R.id.CharityButton);
+        butt.setTypeface(buttonFont);
 
         FirebaseApp.initializeApp(this);
         aController = (Controller) getApplicationContext();
@@ -62,11 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
-
-
             }
-
-
 
             @Override
             public void onCancelled(DatabaseError databaseError) {

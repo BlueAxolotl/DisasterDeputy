@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     tools:context="com.example.pranay.disasterdeputy.MainActivity">
+
 <!--This is the main activity in which the user chooses whether they are a charity-->
     <!--or a donor the buttons take them to the respective screens -->
     <TextView
         android:id="@+id/WelcomeMessage"
-        android:layout_width="263dp"
-        android:layout_height="132dp"
+        android:layout_width="507dp"
+        android:layout_height="290dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -18,7 +20,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="Disaster  Deputy"
-        android:textSize="50sp"
+        android:textSize="60sp"
         app:layout_constraintBottom_toTopOf="@+id/CharityButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.076"
@@ -30,39 +32,52 @@
 
     <Button
         android:id="@+id/CharityButton"
-        android:layout_width="372dp"
-        android:layout_height="80dp"
+        android:layout_width="328dp"
+        android:layout_height="95dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginLeft="4dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="8dp"
         android:onClick="CharityPush"
         android:text="I'm A Charity"
+        android:textSize="40sp"
+        android:background="#F7F7F7"
+        android:textColor="#050F6A"
         app:layout_constraintBottom_toTopOf="@+id/DonorButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/DonorButton"
-        android:layout_width="377dp"
-        android:layout_height="78dp"
-        android:layout_marginBottom="44dp"
+        android:layout_width="324dp"
+        android:layout_height="91dp"
+        android:layout_marginBottom="36dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="4dp"
         android:onClick="DonorPush"
         android:text="I'm A Donor"
+        android:textSize="40sp"
+        android:background="#F7F7F7"
+        android:textColor="#050F6A"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!--<ImageView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android: id= "@+id/imageView"-->
-        <!--android: src= "@drawable/photo"/>-->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/myImageView"
+        android:adjustViewBounds="true"
+        android:maxWidth="120dp"
+        android:maxHeight="120dp"
+        android:scaleType="fitCenter"
+        android:layout_marginLeft="3dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
 </android.support.constraint.ConstraintLayout>

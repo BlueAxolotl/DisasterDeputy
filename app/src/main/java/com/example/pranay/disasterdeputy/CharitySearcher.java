@@ -142,7 +142,7 @@ public class CharitySearcher extends AppCompatActivity {
     public void CharityRefresh2(View v){                                     //figure out why this works for a single value event her but is only the
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {     //value event listener in the donor push and charity push button
             @Override                                                       //make sure that this is checked
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(DataSnapshot dataSnapshot) {           //check if this listener is ok with the value FIX THIS
                 aController.getData().clearCharities();
 
                 for(DataSnapshot charitysnapshot: dataSnapshot.getChildren()){
