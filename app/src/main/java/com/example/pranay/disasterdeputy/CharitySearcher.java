@@ -1,6 +1,7 @@
 package com.example.pranay.disasterdeputy;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -40,7 +42,8 @@ public class CharitySearcher extends AppCompatActivity {
     Controller aController;
     ListAdapter charityAdapter;
     int count;
-
+    Button b;
+    Button butt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,9 +64,19 @@ public class CharitySearcher extends AppCompatActivity {
            String CharityName = charitiesObjects.get(i).getName();
            CharityNamesOnly.add(CharityName);
        }
+
+        //change enter button
+        b = (Button) findViewById(R.id.CharityEnterButton);
+        Typeface buttonFont = Typeface.createFromAsset(getAssets(), "fonts/Quicksand_Book.otf");
+        b.setTypeface(buttonFont);
+
+        //change charity refresh font
+        butt = (Button) findViewById(R.id.CharityRefreshButton);
+        butt.setTypeface(buttonFont);
+
        //This displays the charity list of names only on the donor screen
        //Next we have to figure out how to implement the adapter listener so that when the item is clicked it will go to the next page
-        charityAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, CharityNamesOnly);
+        charityAdapter = new ArrayAdapter<String>(this, R.layout.mytextview, CharityNamesOnly);
        ListView myListView = (ListView) findViewById(R.id.UserCharityList);
        myListView.setAdapter(charityAdapter);
 

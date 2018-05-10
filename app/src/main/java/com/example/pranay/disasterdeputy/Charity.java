@@ -22,9 +22,6 @@ public class Charity {
         distance=0;
     }
 
-
-
-
     //This method takes the input of a string and sets that to the name of a charity object
     public void setName(String n){
 

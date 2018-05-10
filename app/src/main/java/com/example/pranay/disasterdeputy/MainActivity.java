@@ -55,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
         charities = new CharityList();
 
         //UI
-        //font stuff
+
+        //font for title text
         t = (TextView) findViewById(R.id.WelcomeMessage);
         Typeface myCustomFont = Typeface.createFromAsset(getAssets(), "fonts/cocogoose.ttf");
         t.setTypeface(myCustomFont);
@@ -66,12 +67,12 @@ public class MainActivity extends AppCompatActivity {
 
         //image position
         ImageView s = (ImageView) findViewById(R.id.myImageView);
-        s.setY(120);
-        s.setX(755);
+        s.setX(200);
+        s.setY(370);
 
         //change donor button font
         b = (Button) findViewById(R.id.DonorButton);
-        Typeface buttonFont = Typeface.createFromAsset(getAssets(), "fonts/redona.ttf");
+        Typeface buttonFont = Typeface.createFromAsset(getAssets(), "fonts/Quicksand_Book.otf");
         b.setTypeface(buttonFont);
 
         //change charity button font

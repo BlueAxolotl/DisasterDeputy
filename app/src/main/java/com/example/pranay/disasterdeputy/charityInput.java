@@ -1,6 +1,7 @@
 package com.example.pranay.disasterdeputy;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -35,13 +37,17 @@ public class charityInput extends AppCompatActivity {
     DatabaseReference myRef;
     String charityName;
     Controller aController;
+    TextView t;
+    TextView a;
+    Button b;
+    Button butt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_charity_input);
         Bundle bundle = getIntent().getExtras();
-         position=bundle.getInt("position");
+        position=bundle.getInt("position");
         aController = (Controller) getApplicationContext();
         FirebaseDatabase database= FirebaseDatabase.getInstance();
         myRef= database.getReference("Charities");
@@ -51,17 +57,31 @@ public class charityInput extends AppCompatActivity {
 
 
         TextView nametext = findViewById(R.id.individualCharityName);
-        nametext.setText("Charity Name: " + charityName);
+        nametext.setText(charityName);
 
         TextView  locationText= findViewById(R.id.individualcharityLocation);
-        locationText.setText("Charity Location: " + charityLocation );
+        locationText.setText(charityLocation);
 
+        //font for charity name
+        Typeface myCustomFont = Typeface.createFromAsset(getAssets(), "fonts/Quicksand_Book.otf");
+        nametext.setTypeface(myCustomFont);
+        nametext.setTypeface(null, Typeface.BOLD);
 
-        ListAdapter charityAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, charitySupplies); //only works if something is in the list
+        //font for charity location
+        t = (TextView) findViewById(R.id.individualcharityLocation);
+        t.setTypeface(myCustomFont);
+
+        //change donor button font
+        b = (Button) findViewById(R.id.clearSupply);
+        b.setTypeface(myCustomFont);
+
+        //change charity button font
+        butt = (Button) findViewById(R.id.AddSupply);
+        butt.setTypeface(myCustomFont);
+
+        ListAdapter charityAdapter = new ArrayAdapter<String>(this, R.layout.mytextview, charitySupplies); //only works if something is in the list
         ListView myListView = (ListView) findViewById(R.id.SupplyList);                                                            //had to put none in the list for now
-        myListView.setAdapter(charityAdapter);                                                                                      //in the method that can be deleted when something is added to
-
-
+        myListView.setAdapter(charityAdapter);
 
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override

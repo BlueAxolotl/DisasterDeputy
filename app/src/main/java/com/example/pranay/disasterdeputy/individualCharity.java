@@ -1,5 +1,6 @@
 package com.example.pranay.disasterdeputy;
 
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -25,13 +26,17 @@ public class individualCharity extends AppCompatActivity {
 
 
         TextView nametext = findViewById(R.id.charityName);
-        nametext.setText("Charity Name: " + charityName);
+        nametext.setText(charityName);
+        Typeface myCustomFont = Typeface.createFromAsset(getAssets(), "fonts/Quicksand_Book.otf");
+        nametext.setTypeface(myCustomFont);
+        nametext.setTypeface(null, Typeface.BOLD);
 
         TextView  locationText= findViewById(R.id.charityLocation);
-        locationText.setText("Charity Location: " + charityLocation );
+        locationText.setText(charityLocation);
+        locationText.setTypeface(myCustomFont);
 
 
-        ListAdapter charityAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, charitySupplies);
+        ListAdapter charityAdapter = new ArrayAdapter<String>(this, R.layout.mytextview, charitySupplies);
         ListView myListView = (ListView) findViewById(R.id.suppliesList);
     myListView.setAdapter(charityAdapter);
     }

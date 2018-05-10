@@ -1,9 +1,11 @@
 package com.example.pranay.disasterdeputy;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
@@ -18,6 +20,10 @@ public class clearOneScreen extends AppCompatActivity {
     Controller aController;
     DatabaseReference myRef;
     String charityName;
+    TextView t;
+    Button b;
+    Button butt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -32,6 +38,20 @@ public class clearOneScreen extends AppCompatActivity {
         setContentView(R.layout.activity_clear_one_screen);
         TextView nametext = findViewById(R.id.clearOneSupplyMessage);
         nametext.setText("Are you sure you would like to delete " + supplyName+ " from your supplies list?");
+
+        //font for question text
+        t = (TextView) findViewById(R.id.clearOneSupplyMessage);
+        Typeface myCustomFont = Typeface.createFromAsset(getAssets(), "fonts/cocogoose.ttf");
+        t.setTypeface(myCustomFont);
+
+        //change yes button font
+        b = (Button) findViewById(R.id.confirmOneButton);
+        Typeface buttonFont = Typeface.createFromAsset(getAssets(), "fonts/Quicksand_Book.otf");
+        b.setTypeface(buttonFont);
+
+        //change no button font
+        butt = (Button) findViewById(R.id.DenyOneButton);
+        butt.setTypeface(buttonFont);
     }
 
 

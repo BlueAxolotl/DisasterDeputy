@@ -1,6 +1,7 @@
 package com.example.pranay.disasterdeputy;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -35,8 +37,8 @@ public class DonorSearcher extends AppCompatActivity {
     int count;
     ListAdapter charityAdapter;
     Controller aController;
-
-
+    Button b;
+    Button butt;
 
     @Override
     //the new shortened array lists will be used to display information on the following page because those are the elements that will be clicked on
@@ -62,6 +64,15 @@ public class DonorSearcher extends AppCompatActivity {
 
        CharityNamesOnly= new ArrayList<String>();
 
+        //change enter button font
+        b = (Button) findViewById(R.id.SupplySearch);
+        Typeface buttonFont = Typeface.createFromAsset(getAssets(), "fonts/Quicksand_Book.otf");
+        b.setTypeface(buttonFont);
+
+        //change refresh button font
+        butt = (Button) findViewById(R.id.SupplyReset);
+        butt.setTypeface(buttonFont);
+
 
         for(int i=0; i<charitiesObjects.size(); i++){
             String CharityName = charitiesObjects.get(i).getName();
@@ -70,7 +81,7 @@ public class DonorSearcher extends AppCompatActivity {
         }
         //This displays the charity list of names only on the donor screen
         //Next we have to figure out how to implement the adapter listener so that when the item is clicked it will go to the next page
-         charityAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, CharityNamesOnly);
+         charityAdapter = new ArrayAdapter<String>(this, R.layout.mytextview, CharityNamesOnly);
         ListView myListView = (ListView) findViewById(R.id.UserCharityList);
         myListView.setAdapter(charityAdapter);
 
@@ -87,10 +98,6 @@ public class DonorSearcher extends AppCompatActivity {
             }
 
         });
-
-
-
-
 
     }
     public void charitySearch(View v){                           //don't know if this method will stop the list from being complete if the screen were to revert back
