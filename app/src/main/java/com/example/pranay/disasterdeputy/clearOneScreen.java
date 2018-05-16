@@ -22,20 +22,24 @@ public class clearOneScreen extends AppCompatActivity {
     String charityName;
     TextView t;
     Button b;
-    Button butt;
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_clear_one_screen);
+
+        //This gets the data that was passed from the previous screen
         Bundle bundle = getIntent().getExtras();
         position=bundle.getInt("position");
         supplyName= bundle.getString("supplyName");
         SupplyPlacement =bundle.getInt("supplyPlacement");
         charityName=bundle.getString("CharityName");
+
         myRef= FirebaseDatabase.getInstance().getReference("Charities");
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_clear_one_screen);
+      //This is a statement to make sure the user would like to delete the supply
         TextView nametext = findViewById(R.id.clearOneSupplyMessage);
         nametext.setText("Are you sure you would like to delete " + supplyName+ " from your supplies list?");
 
@@ -50,11 +54,12 @@ public class clearOneScreen extends AppCompatActivity {
         b.setTypeface(buttonFont);
 
         //change no button font
-        butt = (Button) findViewById(R.id.DenyOneButton);
-        butt.setTypeface(buttonFont);
+        button = (Button) findViewById(R.id.DenyOneButton);
+        button.setTypeface(buttonFont);
     }
 
-
+    //If the user clicks the yes button it deletes the supply they selected on the previous screen from the list of supplies in their charity
+    //after the supply is deleted the app returns back to the previous screen
     public void deleteOne(View v){
         aController = (Controller) getApplicationContext();
 
@@ -66,8 +71,9 @@ public class clearOneScreen extends AppCompatActivity {
         Intent myintent=new Intent(v.getContext(), charityInput.class);
         myintent.putExtra("position",position);
         startActivityForResult(myintent,0);
-
     }
+
+    //this leaves all the supplies in the list and returns to the previous screen if the user selects no
     public void leaveAll(View v){
         Intent myintent=new Intent(v.getContext(), charityInput.class);
         myintent.putExtra("position",position);

@@ -8,8 +8,9 @@
 
     <TextView
         android:id="@+id/charityName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="560dp"
+        android:layout_height="131dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -17,7 +18,6 @@
         android:text="@string/charityName"
         android:textColor="#000000"
         android:textSize="30sp"
-        android:layout_gravity="center_horizontal"
         app:layout_constraintBottom_toTopOf="@+id/suppliesList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,11 +26,13 @@
 
     <TextView
         android:id="@+id/charityLocation"
-        android:layout_width="305dp"
+        android:layout_width="566dp"
         android:layout_height="119dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="247dp"
+        android:layout_marginLeft="246dp"
+        android:layout_marginRight="247dp"
         android:layout_marginStart="246dp"
         android:layout_marginTop="92dp"
         android:text="@string/charityLocation"
@@ -38,15 +40,14 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.044" />
+        app:layout_constraintVertical_bias="0.136" />
 
     <ListView
         android:id="@+id/suppliesList"
         android:layout_width="439dp"
-        android:layout_height="530dp"
+        android:layout_height="487dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -54,9 +55,8 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.766" />
+        app:layout_constraintVertical_bias="0.947" />
 
 </android.support.constraint.ConstraintLayout>

@@ -17,8 +17,11 @@ public class individualCharity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_individual_charity);
 
+        //this gets the data that was passed from the previous method
         Bundle bundle = getIntent().getExtras();
         position=bundle.getInt("position");
+
+        //this gets the information from the controller that is specific to the charity that was chosen
         final Controller aController = (Controller) getApplicationContext();
         String charityName=aController.getData().getOneCharity(position).getName();
         String charityLocation=aController.getData().getOneCharity(position).getZipcode();
@@ -35,9 +38,9 @@ public class individualCharity extends AppCompatActivity {
         locationText.setText(charityLocation);
         locationText.setTypeface(myCustomFont);
 
-
+        //this displays the list of supplies from the controller
         ListAdapter charityAdapter = new ArrayAdapter<String>(this, R.layout.mytextview, charitySupplies);
         ListView myListView = (ListView) findViewById(R.id.suppliesList);
-    myListView.setAdapter(charityAdapter);
+         myListView.setAdapter(charityAdapter);
     }
 }

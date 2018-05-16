@@ -3,17 +3,20 @@ import java.util.ArrayList;
 public class Charity {
     private String zipcode;
     private String name;
-    private  long distance;
+    private  long distance;         //The distance is for a future extension of the app.
     private ArrayList<String> supplies;
 
 //This class models a charity with a certain location and a list of supplies that the charity needs
 
+//This is an empty constructor that is required for firebase.
 
     public Charity(){
+
         supplies= new ArrayList<String>();
     }
 
     //This constructor creates a charity object with the name, address and supplies of the charity
+    //The constructor contains the distance from the charity as a possible extension
     public Charity(String n, String z, ArrayList<String> s){
         name = n;
         zipcode = z;
@@ -62,17 +65,18 @@ public class Charity {
 
         return 0;
     }
-
+    //This method is used to set the supplies of the charity
     public void setSupplies(ArrayList<String> s){
 
         this.supplies=s;
     }
-
+    //This method is to add a single item to the supplies of a charity \
     public void addSupplies(String supply){
         supplies.add(supply);
 
     }
 
+    //this method does not take any input and clears the list of supplies in the specific charity
     public void clearSupplies(){
         supplies.clear();
     }

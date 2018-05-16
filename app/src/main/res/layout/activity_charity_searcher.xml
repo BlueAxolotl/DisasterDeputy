@@ -33,42 +33,42 @@
 
     <Button
         android:id="@+id/CharityEnterButton"
-        android:layout_width="230dp"
-        android:layout_height="72dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="235dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginLeft="52dp"
+        android:layout_marginStart="52dp"
         android:background="#F7F7F7"
         android:onClick="charitySearch2"
+
         android:text="Enter"
-        android:textSize="30sp"
         android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.089"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.176" />
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/UserCharityList"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/CharityRefreshButton"
-        android:layout_width="230dp"
-        android:layout_height="72dp"
-        android:layout_marginBottom="608dp"
-        android:layout_marginEnd="40dp"
+        android:layout_width="242dp"
+        android:layout_height="76dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="60dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+
+        android:layout_marginTop="20dp"
         android:background="#F7F7F7"
         android:onClick="CharityRefresh2"
         android:text="Refresh"
-        android:textSize="30sp"
         android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/UserCharityList"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.958"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.963"/>
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toEndOf="@+id/CharityEnterButton"
+        app:layout_constraintTop_toBottomOf="@+id/CharityNameSearch"
+        app:layout_constraintVertical_bias="0.15" />
 
     <ListView
         android:id="@+id/UserCharityList"
@@ -83,7 +83,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CharityNameSearch"
         app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>

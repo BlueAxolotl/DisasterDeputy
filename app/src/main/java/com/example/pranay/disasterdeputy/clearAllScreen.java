@@ -29,9 +29,13 @@ public class clearAllScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clear_all_screen);
+
+        //This gets the data from the previous screen
         Bundle bundle = getIntent().getExtras();
-        position=bundle.getInt("position");
+        position=bundle.getInt("position");   //this is the position of the charity in the controller
         charityName=bundle.getString("CharityName");
+
+
         myRef= FirebaseDatabase.getInstance().getReference("Charities");
 
         //font for question text
@@ -49,6 +53,8 @@ public class clearAllScreen extends AppCompatActivity {
         butt.setTypeface(buttonFont);
     }
 
+    //if the user clicks the yes buttons then all the data is cleared from the specified charity
+    //the method also returns to the previous screen
     public void clearSupplies(View v){
          aController = (Controller) getApplicationContext();
 
@@ -64,6 +70,8 @@ public class clearAllScreen extends AppCompatActivity {
 
     }
 
+
+    //if the user clicks no then the supplies is left the way it is and the app returns to the previous screen
     public void leaveSupplies(View v){
         Intent back =new Intent(v.getContext(), charityInput.class);
         back.putExtra("position",position);
